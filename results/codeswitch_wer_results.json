@@ -1,0 +1,198 @@
+{
+  "model": "openai/whisper-small",
+  "type": "whisper_lora_codeswitch",
+  "codeswitch_wer": 0.946058091286307,
+  "num_total_samples": 20,
+  "pattern_summary": {
+    "ko_ru": {
+      "wer": 0.9805825242718447,
+      "num_samples": 10
+    },
+    "ru_ko": {
+      "wer": 0.9202898550724637,
+      "num_samples": 10
+    }
+  },
+  "results": [
+    {
+      "id": "cs_0",
+      "pattern": "ko_ru",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000001.wav",
+      "reference": "말했잖아요. довольно",
+      "prediction": " 말했잖아요. 다 볼나.",
+      "normalized_reference": "말했잖아요 довольно",
+      "normalized_prediction": "말했잖아요 다 볼나"
+    },
+    {
+      "id": "cs_1",
+      "pattern": "ru_ko",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000002.wav",
+      "reference": "Там рядом с тобой Рыжова сидит. 물론 공장에서 내준 것이 아니고 여공들 스스로 해입게 하였던 것이다.",
+      "prediction": " tam rya dom s toboj rujowo sidit.",
+      "normalized_reference": "там рядом с тобой рыжова сидит 물론 공장에서 내준 것이 아니고 여공들 스스로 해입게 하였던 것이다",
+      "normalized_prediction": "tam rya dom s toboj rujowo sidit"
+    },
+    {
+      "id": "cs_2",
+      "pattern": "ko_ru",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000003.wav",
+      "reference": "그것을 다스리며 지키게 하시고 Сердце в исступлении, рвет и мечет.",
+      "prediction": " That's what you're doing.",
+      "normalized_reference": "그것을 다스리며 지키게 하시고 сердце в исступлении рвет и мечет",
+      "normalized_prediction": "thats what youre doing"
+    },
+    {
+      "id": "cs_3",
+      "pattern": "ru_ko",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000004.wav",
+      "reference": "«Вот я вас! – закричал Иван Кузмич. 반만년 오랜 력사에",
+      "prediction": " Wo kye vas zakrechal e wan kuzmich? Ban man nian uren ryeksa e",
+      "normalized_reference": "вот я вас закричал иван кузмич 반만년 오랜 력사에",
+      "normalized_prediction": "wo kye vas zakrechal e wan kuzmich ban man nian uren ryeksa e"
+    },
+    {
+      "id": "cs_4",
+      "pattern": "ko_ru",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000005.wav",
+      "reference": "그 스승 때문에 우리는 더욱 단련되는 것이다. Это пленарное заседание возобновится сразу же после того, как Комитет завершит свою работу.",
+      "prediction": " Ge suseng de munhe ori nan teok dalnendene nge shida. Eto plinarne zasidane vazemnawice srazu je pasli tovo, ka komitec завyershi tsewayu romutu.",
+      "normalized_reference": "그 스승 때문에 우리는 더욱 단련되는 것이다 это пленарное заседание возобновится сразу же после того как комитет завершит свою работу",
+      "normalized_prediction": "ge suseng de munhe ori nan teok dalnendene nge shida eto plinarne zasidane vazemnawice srazu je pasli tovo ka komitec завyershi tsewayu romutu"
+    },
+    {
+      "id": "cs_5",
+      "pattern": "ru_ko",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000006.wav",
+      "reference": "Оба едут. 여호와 하나님이 가라사대 사람의 독처하는 것이 좋지 못하니",
+      "prediction": " ḍᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀ�",
+      "normalized_reference": "оба едут 여호와 하나님이 가라사대 사람의 독처하는 것이 좋지 못하니",
+      "normalized_prediction": "ḍᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀᴀ"
+    },
+    {
+      "id": "cs_6",
+      "pattern": "ko_ru",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000007.wav",
+      "reference": "참 한 가지 잊어버린 것이 있다. Я предоставляю слово представителю Фиджи.",
+      "prediction": " Cham han gaji ijjewo ran gashi itta. Ja breadestawdae sloba breadestawit liu fidri.",
+      "normalized_reference": "참 한 가지 잊어버린 것이 있다 я предоставляю слово представителю фиджи",
+      "normalized_prediction": "cham han gaji ijjewo ran gashi itta ja breadestawdae sloba breadestawit liu fidri"
+    },
+    {
+      "id": "cs_7",
+      "pattern": "ru_ko",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000008.wav",
+      "reference": "А можно такой же обзор кандидатов, как перед мэрскими? 그는 한숨을 길게 쉬며 머리를 숙여 버렸습니다.",
+      "prediction": " And it is possible to do the same as before the mayor's office. He was breathing for a long time and lowered his head.",
+      "normalized_reference": "а можно такой же обзор кандидатов как перед мэрскими 그는 한숨을 길게 쉬며 머리를 숙여 버렸습니다",
+      "normalized_prediction": "and it is possible to do the same as before the mayors office he was breathing for a long time and lowered his head"
+    },
+    {
+      "id": "cs_8",
+      "pattern": "ko_ru",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000009.wav",
+      "reference": "아마도. Войны и конфликты были с нами со времен возникновения цивилизации.",
+      "prediction": " Воина и конфликты были с нами со времену возникновение цивилизации.",
+      "normalized_reference": "아마도 войны и конфликты были с нами со времен возникновения цивилизации",
+      "normalized_prediction": "воина и конфликты были с нами со времену возникновение цивилизации"
+    },
+    {
+      "id": "cs_9",
+      "pattern": "ru_ko",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000010.wav",
+      "reference": "Вы замужняя женщина, Вы мать, а пишете какие-то неприличные письма. 신철의 음성은 탁 갈리어 잘 나오지 않았다.",
+      "prediction": " вы замужняя женщина вы мать опишите какие-то неприличные письма 신철의 음성은 탁 관리어 잘 나오지 않았다",
+      "normalized_reference": "вы замужняя женщина вы мать а пишете какието неприличные письма 신철의 음성은 탁 갈리어 잘 나오지 않았다",
+      "normalized_prediction": "вы замужняя женщина вы мать опишите какието неприличные письма 신철의 음성은 탁 관리어 잘 나오지 않았다"
+    },
+    {
+      "id": "cs_10",
+      "pattern": "ko_ru",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000011.wav",
+      "reference": "그들 앞에는 그날 신문의 여러 가지가 놓여 있습니다 Вот эту.",
+      "prediction": " What they do",
+      "normalized_reference": "그들 앞에는 그날 신문의 여러 가지가 놓여 있습니다 вот эту",
+      "normalized_prediction": "what they do"
+    },
+    {
+      "id": "cs_11",
+      "pattern": "ru_ko",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000012.wav",
+      "reference": "Здравствуй, Фенечка! 손끝은 뜨거움이 진해서 차츰 무신경 상태에 들어간다.",
+      "prediction": " Здравствуй, Феничка. Сон кучын 뜨거уми 진에서, за층ы мусинькён 상태에 들어간다.",
+      "normalized_reference": "здравствуй фенечка 손끝은 뜨거움이 진해서 차츰 무신경 상태에 들어간다",
+      "normalized_prediction": "здравствуй феничка сон кучын 뜨거уми 진에서 за층ы мусинькён 상태에 들어간다"
+    },
+    {
+      "id": "cs_12",
+      "pattern": "ko_ru",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000013.wav",
+      "reference": "드디어! И график завершения переговоров к сентябрю будущего года остается в силе.",
+      "prediction": " And the schedule for the next year's September term is in force.",
+      "normalized_reference": "드디어 и график завершения переговоров к сентябрю будущего года остается в силе",
+      "normalized_prediction": "and the schedule for the next years september term is in force"
+    },
+    {
+      "id": "cs_13",
+      "pattern": "ru_ko",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000014.wav",
+      "reference": "Василий 무슨 핑계를 하는지 기어이 못 보게 하고 만다.",
+      "prediction": " We're silly!",
+      "normalized_reference": "василий 무슨 핑계를 하는지 기어이 못 보게 하고 만다",
+      "normalized_prediction": "were silly"
+    },
+    {
+      "id": "cs_14",
+      "pattern": "ko_ru",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000015.wav",
+      "reference": "얼마나 더 걸릴 것 같아요? А я ему дам сдачи.",
+      "prediction": "オルマなどかかりこかたよ あや今だムスターち",
+      "normalized_reference": "얼마나 더 걸릴 것 같아요 а я ему дам сдачи",
+      "normalized_prediction": "オルマなどかかりこかたよ あや今だムスターち"
+    },
+    {
+      "id": "cs_15",
+      "pattern": "ru_ko",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000016.wav",
+      "reference": "Так что тут надо сделать одно: давайте начнем. 그는 죽음으로써 모든 것을 당 하리라고 최후의 결심을 굳게 하였던 것이다.",
+      "prediction": " Так, што тут надо сделать? Одно. Давайте начнем.",
+      "normalized_reference": "так что тут надо сделать одно давайте начнем 그는 죽음으로써 모든 것을 당 하리라고 최후의 결심을 굳게 하였던 것이다",
+      "normalized_prediction": "так што тут надо сделать одно давайте начнем"
+    },
+    {
+      "id": "cs_16",
+      "pattern": "ko_ru",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000017.wav",
+      "reference": "힘들어 뒈지겠어. Зачем я Вам сдался?",
+      "prediction": " ឍ្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្្�",
+      "normalized_reference": "힘들어 뒈지겠어 зачем я вам сдался",
+      "normalized_prediction": "ឍ"
+    },
+    {
+      "id": "cs_17",
+      "pattern": "ru_ko",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000018.wav",
+      "reference": "Мы не имеем права разрушить их мечту. 신철이는 옥점의 이러한 대답을 듣기 위하여 부러 물었던 것이다.",
+      "prediction": " We have no right to destroy their dreams.",
+      "normalized_reference": "мы не имеем права разрушить их мечту 신철이는 옥점의 이러한 대답을 듣기 위하여 부러 물었던 것이다",
+      "normalized_prediction": "we have no right to destroy their dreams"
+    },
+    {
+      "id": "cs_18",
+      "pattern": "ko_ru",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000019.wav",
+      "reference": "그는 얼른 그리로 가서 참외를 만져 보았다. Президент Арафат отверг его.",
+      "prediction": " Ge nén ʻəllən ʻəllən gəliro ʻaɪsə ʻaɪməri ʻaɪmānjə bo ʻaṭta.",
+      "normalized_reference": "그는 얼른 그리로 가서 참외를 만져 보았다 президент арафат отверг его",
+      "normalized_prediction": "ge nén ʻəllən ʻəllən gəliro ʻaɪsə ʻaɪməri ʻaɪmānjə bo ʻaṭta"
+    },
+    {
+      "id": "cs_19",
+      "pattern": "ru_ko",
+      "audio_path": "C:\\Github\\cstool\\data\\processed\\codeswitch_eval\\clips\\cs_000020.wav",
+      "reference": "Его целью было представить точный и сбалансированный отчет об обсуждениях. 그는 놀라 자세히 보니 그가 찾아가던 동무였다.",
+      "prediction": " Yewo celyu bwela pertsahtayu et toechn ek zbalansirowan aechyot kompubsuzhdeniakh.",
+      "normalized_reference": "его целью было представить точный и сбалансированный отчет об обсуждениях 그는 놀라 자세히 보니 그가 찾아가던 동무였다",
+      "normalized_prediction": "yewo celyu bwela pertsahtayu et toechn ek zbalansirowan aechyot kompubsuzhdeniakh"
+    }
+  ]
+}

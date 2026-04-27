@@ -1,0 +1,384 @@
+{
+  "model": "openai/whisper-small",
+  "type": "baseline",
+  "overall_wer": 0.26811594202898553,
+  "num_total_samples": 40,
+  "results": [
+    {
+      "id": "ko_0",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_39910916.mp3",
+      "reference": "춘우가 제발 그런 말을 좀 물어주지 않았으면 좋겠다 하였다.",
+      "prediction": " 준우가 제발 그런 말을 좀 모르주리 않았으면 좋겠다 하였다",
+      "normalized_reference": "춘우가 제발 그런 말을 좀 물어주지 않았으면 좋겠다 하였다",
+      "normalized_prediction": "준우가 제발 그런 말을 좀 모르주리 않았으면 좋겠다 하였다"
+    },
+    {
+      "id": "ko_1",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_39813694.mp3",
+      "reference": "그러면 땅도 파보고 농부들과 함께 아무것이라도 배워 가면서 할 것 같았다.",
+      "prediction": " 그러면 땅도 파고 농부들과 함께 아무 것이라도 배워가면서 할 것 같았다.",
+      "normalized_reference": "그러면 땅도 파보고 농부들과 함께 아무것이라도 배워 가면서 할 것 같았다",
+      "normalized_prediction": "그러면 땅도 파고 농부들과 함께 아무 것이라도 배워가면서 할 것 같았다"
+    },
+    {
+      "id": "ko_2",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_40549570.mp3",
+      "reference": "그런데 여보게",
+      "prediction": " 그런데요 보게",
+      "normalized_reference": "그런데 여보게",
+      "normalized_prediction": "그런데요 보게"
+    },
+    {
+      "id": "ko_3",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_44717004.mp3",
+      "reference": "그는 어정어정 걸으며 사면을 휘휘 돌아보았다.",
+      "prediction": " 그는 어정어정 걸으며 사면을 휘휘 돌아보았다.",
+      "normalized_reference": "그는 어정어정 걸으며 사면을 휘휘 돌아보았다",
+      "normalized_prediction": "그는 어정어정 걸으며 사면을 휘휘 돌아보았다"
+    },
+    {
+      "id": "ko_4",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_43543824.mp3",
+      "reference": "괜찮네.",
+      "prediction": " 괜찮네",
+      "normalized_reference": "괜찮네",
+      "normalized_prediction": "괜찮네"
+    },
+    {
+      "id": "ko_5",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_36838360.mp3",
+      "reference": "선비는 생각지 않은 이 말에 앞이 아뜩해지며 방 안이 핑핑 돌았다.",
+      "prediction": " 선비는 생각지 않은 이 말에 앞이 아득해지며 방안이 핑핑 돌았다.",
+      "normalized_reference": "선비는 생각지 않은 이 말에 앞이 아뜩해지며 방 안이 핑핑 돌았다",
+      "normalized_prediction": "선비는 생각지 않은 이 말에 앞이 아득해지며 방안이 핑핑 돌았다"
+    },
+    {
+      "id": "ko_6",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_39813905.mp3",
+      "reference": "허무맹랑한 얘기 좀 그만 해.",
+      "prediction": " 허무 맹란 얘기 좀 그만해",
+      "normalized_reference": "허무맹랑한 얘기 좀 그만 해",
+      "normalized_prediction": "허무 맹란 얘기 좀 그만해"
+    },
+    {
+      "id": "ko_7",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_41799500.mp3",
+      "reference": "여러분 모두 힘내세요!",
+      "prediction": " 여러분 모두 힘내세요",
+      "normalized_reference": "여러분 모두 힘내세요",
+      "normalized_prediction": "여러분 모두 힘내세요"
+    },
+    {
+      "id": "ko_8",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_39006725.mp3",
+      "reference": "나는 지금 열심히 공부 하고 있다.",
+      "prediction": " 나는 지금 열심히 공부하고 있다.",
+      "normalized_reference": "나는 지금 열심히 공부 하고 있다",
+      "normalized_prediction": "나는 지금 열심히 공부하고 있다"
+    },
+    {
+      "id": "ko_9",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_39832629.mp3",
+      "reference": "그러나 옥점이와 결혼까지 하고 싶은 생각은 꿈에도 없었다.",
+      "prediction": " 그러나 옥점에여 결혼까지 하고 싶은 생각은 꿈에도 없었다.",
+      "normalized_reference": "그러나 옥점이와 결혼까지 하고 싶은 생각은 꿈에도 없었다",
+      "normalized_prediction": "그러나 옥점에여 결혼까지 하고 싶은 생각은 꿈에도 없었다"
+    },
+    {
+      "id": "ko_10",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_41665060.mp3",
+      "reference": "어서 가.",
+      "prediction": " 오, 소가.",
+      "normalized_reference": "어서 가",
+      "normalized_prediction": "오 소가"
+    },
+    {
+      "id": "ko_11",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_40425525.mp3",
+      "reference": "그것은 물론 시급히 닥쳐오는 문제는 아니었다.",
+      "prediction": " 그것은 물론 시급히 닥쳐오는 문제는 아니었다.",
+      "normalized_reference": "그것은 물론 시급히 닥쳐오는 문제는 아니었다",
+      "normalized_prediction": "그것은 물론 시급히 닥쳐오는 문제는 아니었다"
+    },
+    {
+      "id": "ko_12",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_42727232.mp3",
+      "reference": "그런 모임을 조직할 필요를 역설하였다.",
+      "prediction": " 그럼 모임을 조직할 필요를 역설하였다",
+      "normalized_reference": "그런 모임을 조직할 필요를 역설하였다",
+      "normalized_prediction": "그럼 모임을 조직할 필요를 역설하였다"
+    },
+    {
+      "id": "ko_13",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_39161648.mp3",
+      "reference": "결국 나는 또 한번 거기를 가보기로 작정하였다.",
+      "prediction": " 결국 나는 또 한번 거기를 가보기로 작정하겠다.",
+      "normalized_reference": "결국 나는 또 한번 거기를 가보기로 작정하였다",
+      "normalized_prediction": "결국 나는 또 한번 거기를 가보기로 작정하겠다"
+    },
+    {
+      "id": "ko_14",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_38697629.mp3",
+      "reference": "오 분 내로 끊어",
+      "prediction": " 5분 내로 끊어",
+      "normalized_reference": "오 분 내로 끊어",
+      "normalized_prediction": "5분 내로 끊어"
+    },
+    {
+      "id": "ko_15",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_37977382.mp3",
+      "reference": "늙어서도 후회할 일이 적어질 것이다.",
+      "prediction": " 늙어서도 후회할 일이 적어질 것이다.",
+      "normalized_reference": "늙어서도 후회할 일이 적어질 것이다",
+      "normalized_prediction": "늙어서도 후회할 일이 적어질 것이다"
+    },
+    {
+      "id": "ko_16",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_40206469.mp3",
+      "reference": "벌써 한 달이 넘어가는 러시아의 우크라이나 침공은 대체 언제쯤 멈출까?",
+      "prediction": " 벌써 한 달이 넘어가는 러시아의 우쿠라이나 침공은 대체 언제쯤 멈출까?",
+      "normalized_reference": "벌써 한 달이 넘어가는 러시아의 우크라이나 침공은 대체 언제쯤 멈출까",
+      "normalized_prediction": "벌써 한 달이 넘어가는 러시아의 우쿠라이나 침공은 대체 언제쯤 멈출까"
+    },
+    {
+      "id": "ko_17",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_36326823.mp3",
+      "reference": "절대 어제를 후회하지 마라.",
+      "prediction": " 절대 오지를 후회하지 말아",
+      "normalized_reference": "절대 어제를 후회하지 마라",
+      "normalized_prediction": "절대 오지를 후회하지 말아"
+    },
+    {
+      "id": "ko_18",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_41684684.mp3",
+      "reference": "못 들었어?",
+      "prediction": " 뭐 들었어?",
+      "normalized_reference": "못 들었어",
+      "normalized_prediction": "뭐 들었어"
+    },
+    {
+      "id": "ko_19",
+      "lang": "ko",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ko\\clips\\common_voice_ko_44426215.mp3",
+      "reference": "그 중 항아리에 해 넣은 것 있지 않느냐.",
+      "prediction": " 그중 항아리에 해놓은 것이 있지 않느냐",
+      "normalized_reference": "그 중 항아리에 해 넣은 것 있지 않느냐",
+      "normalized_prediction": "그중 항아리에 해놓은 것이 있지 않느냐"
+    },
+    {
+      "summary": true,
+      "model": "openai/whisper-small",
+      "type": "baseline",
+      "lang": "ko",
+      "wer": 0.28695652173913044,
+      "num_samples": 20
+    },
+    {
+      "id": "ru_0",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_26587318.mp3",
+      "reference": "К сожалению, эти предложения не нашли отражения в тексте.",
+      "prediction": " К сожалению, эти предложения не наслие отражения в тексте.",
+      "normalized_reference": "к сожалению эти предложения не нашли отражения в тексте",
+      "normalized_prediction": "к сожалению эти предложения не наслие отражения в тексте"
+    },
+    {
+      "id": "ru_1",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_38513379.mp3",
+      "reference": "Эти меры важны для того, чтобы базировать последующие разоруженческие усилия на прочном фундаменте.",
+      "prediction": " Эти меры важны для того, чтобы базировать последующие разрушенческие силы на прочном фонарде.",
+      "normalized_reference": "эти меры важны для того чтобы базировать последующие разоруженческие усилия на прочном фундаменте",
+      "normalized_prediction": "эти меры важны для того чтобы базировать последующие разрушенческие силы на прочном фонарде"
+    },
+    {
+      "id": "ru_2",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_41631406.mp3",
+      "reference": "Я стоял с поднятыми плечами от внутреннего холода.",
+      "prediction": " Я стоял спутнутыми плечами от внутреннего холода.",
+      "normalized_reference": "я стоял с поднятыми плечами от внутреннего холода",
+      "normalized_prediction": "я стоял спутнутыми плечами от внутреннего холода"
+    },
+    {
+      "id": "ru_3",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_36292648.mp3",
+      "reference": "Толпа озвереет, будет тереться, ощетинит ножки стоглавая вошь.",
+      "prediction": " Толпа звереет, будет тереться, ощутинят ножки стоглавая вошь.",
+      "normalized_reference": "толпа озвереет будет тереться ощетинит ножки стоглавая вошь",
+      "normalized_prediction": "толпа звереет будет тереться ощутинят ножки стоглавая вошь"
+    },
+    {
+      "id": "ru_4",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_19468869.mp3",
+      "reference": "Если не будет возражений, я буду считать, что Ассамблея согласна с этим предложением.",
+      "prediction": " Если не будет возражений, я буду считать, что сам Брея согласна с этим предложением.",
+      "normalized_reference": "если не будет возражений я буду считать что ассамблея согласна с этим предложением",
+      "normalized_prediction": "если не будет возражений я буду считать что сам брея согласна с этим предложением"
+    },
+    {
+      "id": "ru_5",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_40895189.mp3",
+      "reference": "Березники — милый город",
+      "prediction": " Березники, милый город.",
+      "normalized_reference": "березники милый город",
+      "normalized_prediction": "березники милый город"
+    },
+    {
+      "id": "ru_6",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_31928067.mp3",
+      "reference": "Да ты зачем собственно приехал?",
+      "prediction": " Да, ты зачем, собственно приехал?",
+      "normalized_reference": "да ты зачем собственно приехал",
+      "normalized_prediction": "да ты зачем собственно приехал"
+    },
+    {
+      "id": "ru_7",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_25189464.mp3",
+      "reference": "Мы особенно рады отметить, что число скрывающихся от правосудия лиц уменьшилось.",
+      "prediction": " Я особо рада знать, что часы, кто еще, я, кто еще, не улетит со своими шоями.",
+      "normalized_reference": "мы особенно рады отметить что число скрывающихся от правосудия лиц уменьшилось",
+      "normalized_prediction": "я особо рада знать что часы кто еще я кто еще не улетит со своими шоями"
+    },
+    {
+      "id": "ru_8",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_24167668.mp3",
+      "reference": "Контроллер",
+      "prediction": " контролёр",
+      "normalized_reference": "контроллер",
+      "normalized_prediction": "контролёр"
+    },
+    {
+      "id": "ru_9",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_41431379.mp3",
+      "reference": "И, самое главное, она учит нас тому",
+      "prediction": " И самое главное, она учет нас тому,",
+      "normalized_reference": "и самое главное она учит нас тому",
+      "normalized_prediction": "и самое главное она учет нас тому"
+    },
+    {
+      "id": "ru_10",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_23829131.mp3",
+      "reference": "Мы должны четко предвидеть конкретный результат к концу шестьдесят пятой сессии.",
+      "prediction": " Мы должны предвидеть конкретный результат к концу 65 сессии.",
+      "normalized_reference": "мы должны четко предвидеть конкретный результат к концу шестьдесят пятой сессии",
+      "normalized_prediction": "мы должны предвидеть конкретный результат к концу 65 сессии"
+    },
+    {
+      "id": "ru_11",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_28432697.mp3",
+      "reference": "Неожиданно катастрофа приобрела глобальные масштабы.",
+      "prediction": " Неложиданно катастрофа приобрела глобальные масштабы.",
+      "normalized_reference": "неожиданно катастрофа приобрела глобальные масштабы",
+      "normalized_prediction": "неложиданно катастрофа приобрела глобальные масштабы"
+    },
+    {
+      "id": "ru_12",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_38615634.mp3",
+      "reference": "Никогда со мной этого не бывало.",
+      "prediction": " Никогда со мной этого не бывало.",
+      "normalized_reference": "никогда со мной этого не бывало",
+      "normalized_prediction": "никогда со мной этого не бывало"
+    },
+    {
+      "id": "ru_13",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_28761513.mp3",
+      "reference": "Нет, я не вижу, почему это не может быть новая сила, если она....",
+      "prediction": " Я не вижу почему это не может быть новое сила, если она...",
+      "normalized_reference": "нет я не вижу почему это не может быть новая сила если она",
+      "normalized_prediction": "я не вижу почему это не может быть новое сила если она"
+    },
+    {
+      "id": "ru_14",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_19966065.mp3",
+      "reference": "Палестинцам необходимо сначала установить мир с Израилем, а затем добиваться признания государственности.",
+      "prediction": " Парестинцам необходимо сначала установить мир с израилем, а затем добиваться признания государственности.",
+      "normalized_reference": "палестинцам необходимо сначала установить мир с израилем а затем добиваться признания государственности",
+      "normalized_prediction": "парестинцам необходимо сначала установить мир с израилем а затем добиваться признания государственности"
+    },
+    {
+      "id": "ru_15",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_27306571.mp3",
+      "reference": "Тысячи людей пропали без вести.",
+      "prediction": " Тысячи людей припали без вести.",
+      "normalized_reference": "тысячи людей пропали без вести",
+      "normalized_prediction": "тысячи людей припали без вести"
+    },
+    {
+      "id": "ru_16",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_40877573.mp3",
+      "reference": "Она знала, что хороша собой, это знают с детства",
+      "prediction": " Она знала, что хороша собой это знает с детства.",
+      "normalized_reference": "она знала что хороша собой это знают с детства",
+      "normalized_prediction": "она знала что хороша собой это знает с детства"
+    },
+    {
+      "id": "ru_17",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_28820570.mp3",
+      "reference": "Наталия",
+      "prediction": " Наталья",
+      "normalized_reference": "наталия",
+      "normalized_prediction": "наталья"
+    },
+    {
+      "id": "ru_18",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_18945535.mp3",
+      "reference": "У меня было такое чувство, что что-то такое очень важное я прибавляю.",
+      "prediction": " У меня было такое чувство, что что-то очень важное я прибавляю.",
+      "normalized_reference": "у меня было такое чувство что чтото такое очень важное я прибавляю",
+      "normalized_prediction": "у меня было такое чувство что чтото очень важное я прибавляю"
+    },
+    {
+      "id": "ru_19",
+      "lang": "ru",
+      "audio_path": "C:\\Github\\cstool\\data\\raw\\cv_ru\\clips\\common_voice_ru_42797949.mp3",
+      "reference": "Латинская Америка — это регион с наибольшим в мире неравенством.",
+      "prediction": " Латинская Америка это регион с наибольшим милием неравенства",
+      "normalized_reference": "латинская америка это регион с наибольшим в мире неравенством",
+      "normalized_prediction": "латинская америка это регион с наибольшим милием неравенства"
+    },
+    {
+      "summary": true,
+      "model": "openai/whisper-small",
+      "type": "baseline",
+      "lang": "ru",
+      "wer": 0.2546583850931677,
+      "num_samples": 20
+    }
+  ]
+}
