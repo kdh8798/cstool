@@ -25,7 +25,7 @@ def main():
     for index, sentence in enumerate(SAMPLE_SENTENCES, start=1):
         print(f"[샘플 {index}] {sentence}")
         rule_feedback = generate_feedback(sentence)
-        final_feedback = postprocess_feedback(sentence, rule_feedback, use_llm=False)
+        final_feedback = postprocess_feedback(sentence, rule_feedback, use_llm=True)
         print("[규칙 기반 피드백]")
         print(rule_feedback)
         print("[후처리 피드백]")
