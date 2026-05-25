@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>단어장 — 이중언어 학습 시스템</title>
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="home-page wordbook-page">
+  <div class="app">
+    <a href="index.html" class="page-back-btn" aria-label="시작 화면으로">
+      <i data-lucide="chevron-left"></i>
+    </a>
+
+    <main class="home-main home-main--sub">
+      <section class="wordbook-section" aria-labelledby="wordbookHeading">
+        <h2 id="wordbookHeading" class="wordbook-section__title">단어장</h2>
+        <div class="wordbook-panel">
+          <header class="wordbook-panel__head">
+            <strong>저장된 단어</strong>
+            <span class="wordbook-panel__count">2</span>
+          </header>
+          <div class="word-list">
+            <article class="word-item">
+              <button type="button" class="sound" aria-label="발음 듣기">🔊</button>
+              <h3>나는</h3>
+              <p class="ru">я</p>
+              <small>“나는 학생입니다”</small>
+            </article>
+            <article class="word-item">
+              <button type="button" class="sound" aria-label="발음 듣기">🔊</button>
+              <h3>원하다</h3>
+              <p class="ru">хочу</p>
+              <small>“나는 한국어를 배우고 싶어요”</small>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="wordbook.js"></script>
+</body>
+</html>
