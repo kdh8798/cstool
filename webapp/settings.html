@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>설정 — 이중언어 학습 시스템</title>
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="home-page tab-shell" data-nav="settings">
+  <div class="app">
+    <main class="home-main home-main--scroll">
+      <section class="settings-section" aria-labelledby="settingsHeading">
+        <h2 id="settingsHeading" class="settings-section__title">설정</h2>
+        <ul class="settings-list">
+          <li>
+            <a href="wordbook.html" class="settings-row">
+              <span class="settings-row__label">단어장</span>
+              <i data-lucide="chevron-right" class="settings-row__chevron" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <div class="settings-row settings-row--static">
+              <span class="settings-row__label">학습 언어</span>
+              <span class="settings-row__value">한국어 · 러시아어</span>
+            </div>
+          </li>
+          <li>
+            <div class="settings-row settings-row--static">
+              <span class="settings-row__label">버전</span>
+              <span class="settings-row__value">1.0</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="bottom-nav.js"></script>
+  <script>
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>최근 대화 — 이중언어 학습 시스템</title>
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="home-page tab-shell" data-nav="history">
+  <div class="app">
+    <main class="home-main home-main--scroll">
+      <section class="history-section history-section--full" aria-labelledby="historyHeading">
+        <div class="history-section__head">
+          <h2 id="historyHeading">최근 대화</h2>
+        </div>
+        <ul class="conversation-list" id="conversationList"></ul>
+        <p class="empty-history" id="emptyHistory" hidden>아직 대화가 없어요. 새 대화를 시작해 보세요.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="squircle-fallback.js"></script>
+  <script src="bottom-nav.js"></script>
+  <script src="storage.js"></script>
+  <script src="conversations-ui.js"></script>
+  <script src="history.js"></script>
+</body>
+</html>
