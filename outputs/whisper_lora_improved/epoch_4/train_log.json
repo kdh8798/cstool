@@ -1,0 +1,10 @@
+{
+  "epoch": 4,
+  "avg_loss": 0.3852708680415843,
+  "num_samples": 4700,
+  "batch_size": 8,
+  "grad_accum_steps": 2,
+  "effective_batch_size": 16,
+  "learning_rate": 5e-05,
+  "train_csv": "C:\\Github\\cstool\\data\\processed\\improved_train\\metadata.csv"
+}

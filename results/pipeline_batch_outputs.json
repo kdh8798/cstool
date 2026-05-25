@@ -1,0 +1,19 @@
+{
+  "created_at": "2026-05-25T22:04:10",
+  "samples_dir": "C:\\Github\\cstool\\data\\samples",
+  "num_files": 1,
+  "num_success": 1,
+  "num_error": 0,
+  "results": [
+    {
+      "index": 1,
+      "status": "success",
+      "audio_path": "C:\\Github\\cstool\\data\\samples\\test.mp3",
+      "audio_name": "test.mp3",
+      "language": "auto",
+      "transcription": "왜 이런 일 우리에게 일어나는지 두무지 저는 이해를 할 수가 없었습니다.",
+      "feedback": "학습 피드백: 코드스위칭이나 주요 학습 키워드가 감지되지 않았습니다.",
+      "lora_path": "C:\\Github\\cstool\\outputs\\whisper_lora_improved\\final"
+    }
+  ]
+}

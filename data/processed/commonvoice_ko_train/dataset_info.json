@@ -1,0 +1,29 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "input_features": {
+      "feature": {
+        "feature": {
+          "dtype": "float32",
+          "_type": "Value"
+        },
+        "_type": "List"
+      },
+      "_type": "List"
+    },
+    "labels": {
+      "feature": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "normalized_text": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

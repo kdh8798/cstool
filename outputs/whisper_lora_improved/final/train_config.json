@@ -1,0 +1,13 @@
+{
+  "base_model": "openai/whisper-small",
+  "train_csv": "C:\\Github\\cstool\\data\\processed\\improved_train\\metadata.csv",
+  "output_dir": "C:\\Github\\cstool\\outputs\\whisper_lora_improved",
+  "final_dir": "C:\\Github\\cstool\\outputs\\whisper_lora_improved\\final",
+  "num_samples": 4700,
+  "batch_size": 8,
+  "grad_accum_steps": 2,
+  "effective_batch_size": 16,
+  "epochs": 5,
+  "learning_rate": 5e-05,
+  "target_sr": 16000
+}
