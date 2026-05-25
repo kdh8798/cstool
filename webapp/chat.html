@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>대화 — 이중언어 학습 시스템</title>
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="chat-page">
+  <div class="app">
+    <header class="chat-topbar">
+      <a href="index.html" class="page-back-btn" aria-label="시작 화면으로">
+        <i data-lucide="chevron-left"></i>
+      </a>
+      <h1 class="chat-topbar__title" id="chatTitle">새 대화</h1>
+    </header>
+
+    <main class="chat-area" id="chatArea">
+      <section class="message assistant recognizing" id="recognizingBox">
+        <div class="status-dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <span id="statusText">음성 인식 대기 중</span>
+      </section>
+    </main>
+
+    <aside class="word-card" id="wordCard">
+      <div class="word-head">
+        <strong>단어장</strong>
+        <span>2</span>
+        <button id="collapseBtn">⌄</button>
+        <button id="closeBtn">×</button>
+      </div>
+      <div class="word-list">
+        <article class="word-item">
+          <button class="sound">🔊</button>
+          <h3>나는</h3>
+          <p class="ru">я</p>
+          <small>“나는 학생입니다”</small>
+        </article>
+        <article class="word-item">
+          <button class="sound">🔊</button>
+          <h3>원하다</h3>
+          <p class="ru">хочу</p>
+          <small>“나는 한국어를 배우고 싶어요”</small>
+        </article>
+      </div>
+    </aside>
+
+    <footer class="bottombar">
+      <button class="mic-btn" id="micBtn" aria-label="녹음 시작">
+        <i data-lucide="mic" class="mic-icon"></i>
+      </button>
+
+      <div class="record-popup" id="recordPopup" hidden>
+        <div class="audio-bars" id="audioBars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <p class="record-time" id="recordTime">00:00</p>
+      </div>
+
+      <p id="micText">녹음 시작</p>
+    </footer>
+  </div>
+
+  <script src="storage.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
