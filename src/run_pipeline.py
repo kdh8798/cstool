@@ -46,7 +46,7 @@ BASE_MODEL = "openai/whisper-small"
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 최종 모델이 있으면 이 경로 사용
-FINAL_LORA_PATH = BASE_DIR / "outputs" / "whisper_lora_final" / "final"
+FINAL_LORA_PATH = BASE_DIR / "outputs" / "whisper_lora_improved" / "final"
 
 # final 모델 학습 전이면 기존 manual 모델 사용
 MANUAL_LORA_PATH = BASE_DIR / "outputs" / "whisper_lora_manual" / "final"

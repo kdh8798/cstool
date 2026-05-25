@@ -1,0 +1,7 @@
+{
+  "epoch": 1,
+  "avg_loss": 1.0652790128364475,
+  "num_samples": 1308,
+  "batch_size": 2,
+  "learning_rate": 0.0001
+}

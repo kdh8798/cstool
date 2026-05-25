@@ -36,8 +36,11 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 TARGET_SR = 16000
 BATCH_SIZE = 2
-EPOCHS = 3
-LEARNING_RATE = 1e-4
+GRAD_ACCUM_STEPS = 4
+# EPOCHS = 3
+# LEARNING_RATE = 1e-4
+EPOCHS = 5
+LEARNING_RATE = 5e-5
 MAX_LABEL_LENGTH = 448
 
 
@@ -174,6 +177,8 @@ for epoch in range(1, EPOCHS + 1):
 
     progress_bar = tqdm(train_loader, desc=f"Epoch {epoch}/{EPOCHS}")
 
+    optimizer.zero_grad()
+
     for step, batch in enumerate(progress_bar):
         input_features = batch["input_features"].to(DEVICE)
         labels = batch["labels"].to(DEVICE)
@@ -183,19 +188,27 @@ for epoch in range(1, EPOCHS + 1):
             labels=labels
         )
 
-        loss = outputs.loss
+        original_loss = outputs.loss
+        loss = original_loss / GRAD_ACCUM_STEPS
 
-        optimizer.zero_grad()
         loss.backward()
-        optimizer.step()
 
-        total_loss += loss.item()
+        if (step + 1) % GRAD_ACCUM_STEPS == 0:
+            optimizer.step()
+            optimizer.zero_grad()
+
+        total_loss += original_loss.item()
         avg_loss = total_loss / (step + 1)
 
         progress_bar.set_postfix({
-            "loss": f"{loss.item():.4f}",
+            "loss": f"{original_loss.item():.4f}",
             "avg_loss": f"{avg_loss:.4f}"
         })
+
+    # 남은 gradient 처리
+    if len(train_loader) % GRAD_ACCUM_STEPS != 0:
+        optimizer.step()
+        optimizer.zero_grad()
 
     epoch_dir = OUTPUT_DIR / f"epoch_{epoch}"
     epoch_dir.mkdir(parents=True, exist_ok=True)
@@ -210,6 +223,8 @@ for epoch in range(1, EPOCHS + 1):
         "num_samples": len(train_dataset),
         "batch_size": BATCH_SIZE,
         "learning_rate": LEARNING_RATE,
+        "grad_accum_steps": GRAD_ACCUM_STEPS,
+        "effective_batch_size": BATCH_SIZE * GRAD_ACCUM_STEPS,
     }
 
     with open(epoch_dir / "train_log.json", "w", encoding="utf-8") as f:

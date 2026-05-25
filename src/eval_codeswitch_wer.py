@@ -29,7 +29,8 @@ BASE_MODEL = "openai/whisper-small"
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-LORA_PATH = BASE_DIR / "outputs" / "whisper_lora_manual" / "final"
+# LORA_PATH = BASE_DIR / "outputs" / "whisper_lora_manual" / "final"
+LORA_PATH = BASE_DIR / "outputs" / "whisper_lora_improved" / "final"
 
 CODESWITCH_DIR = BASE_DIR / "data" / "processed" / "codeswitch_eval"
 CODESWITCH_CLIPS_DIR = CODESWITCH_DIR / "clips"

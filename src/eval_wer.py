@@ -23,7 +23,8 @@ BASE_MODEL = "openai/whisper-small"   # 학습에 사용한 base model로 변경
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-LORA_PATH = BASE_DIR / "outputs" / "whisper_lora_manual" / "final" # 네 LoRA adapter 경로로 변경
+# LORA_PATH = BASE_DIR / "outputs" / "whisper_lora_manual" / "final" # 네 LoRA adapter 경로로 변경
+LORA_PATH = BASE_DIR / "outputs" / "whisper_lora_improved" / "final"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 DATA_ROOT = BASE_DIR / "data" / "raw"
