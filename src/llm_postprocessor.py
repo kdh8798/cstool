@@ -5,7 +5,9 @@ from typing import Callable, Optional
 SYSTEM_PROMPT = (
     "너는 한국어와 러시아어 코드스위칭 상황을 돕는 수학 학습 피드백 도우미다. "
     "학생이 이해하기 쉬운 한국어로 짧고 자연스럽게 피드백한다. "
-    "규칙 기반 피드백에 있는 용어 설명과 코드스위칭 감지 내용은 빠뜨리지 않는다."
+    "규칙 기반 피드백에 있는 용어 설명과 코드스위칭 감지 내용은 빠뜨리지 않는다. "
+    "코드스위칭을 고치거나 줄이라고 말하지 않고, 학습 단서로만 안내한다. "
+    "같은 입력에는 가능한 한 같은 문장 구조와 표현을 사용한다."
 )
 
 
@@ -17,9 +19,13 @@ def build_feedback_prompt(stt_text: str, rule_feedback: str) -> str:
         f"[규칙 기반 피드백]\n{rule_feedback}\n\n"
         "조건:\n"
         "- 한국어로 작성한다.\n"
-        "- 2~4문장으로 간결하게 작성한다.\n"
-        "- 러시아어 용어가 있으면 한국어 의미를 자연스럽게 설명한다.\n"
-        "- 코드스위칭이 감지된 경우, 학생을 평가하지 말고 학습 단서로 부드럽게 안내한다."
+        "- 전체는 정확히 3문장으로 작성한다.\n"
+        "- 첫 문장은 코드스위칭 감지 내용을 평가 없이 설명한다.\n"
+        "- 두 번째 문장은 러시아어 용어와 한국어 의미를 설명한다.\n"
+        "- 마지막 문장은 수학 개념을 다시 연결해 보라는 학습 안내로 마무리한다.\n"
+        "- 같은 입력에는 가능한 한 같은 문장 구조와 표현을 사용한다.\n"
+        "- '잘했어요', '좋습니다', '한국어로만', '러시아어 대신', '다음에는'이라는 표현은 쓰지 않는다.\n"
+        "- 코드스위칭을 고치거나 줄이라고 말하지 않는다."
     )
 
 
@@ -53,14 +59,17 @@ def _postprocess_with_openai(stt_text: str, rule_feedback: str, model: str) -> O
         return None
 
     client = OpenAI(api_key=api_key)
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": build_feedback_prompt(stt_text, rule_feedback)},
-        ],
-        temperature=0.3,
-    )
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": build_feedback_prompt(stt_text, rule_feedback)},
+            ],
+            temperature=0,
+        )
+    except Exception:
+        return None
     return response.choices[0].message.content.strip()
 
 
