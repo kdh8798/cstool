@@ -34,7 +34,8 @@ from transformers import WhisperProcessor, WhisperForConditionalGeneration
 from transformers.utils import logging as hf_logging
 from peft import PeftModel
 
-from feedback_generator import generate_feedback
+# from feedback_generator import generate_feedback
+from src.feedback_generator import generate_feedback
 
 warnings.filterwarnings("ignore")
 hf_logging.set_verbosity_error()
