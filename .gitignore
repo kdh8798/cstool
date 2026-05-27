@@ -3,3 +3,5 @@ memo.txt
 \data\raw\cv_ru\clips
 run_final_pipeline.bat
 venv/
+\caddy
+run_api_server.bat
