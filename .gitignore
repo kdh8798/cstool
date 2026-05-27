@@ -9,3 +9,4 @@ run_all_server.bat
 run_api_server.bat
 run_caddy_server.bat
 run_cloudflare_tunnel.bat
+.env
