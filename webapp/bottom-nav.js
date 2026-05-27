@@ -6,9 +6,9 @@
 
   const active = document.body.dataset.nav || '';
   const items = [
-    { nav: 'home', href: 'index.html', icon: 'house', label: '홈' },
-    { nav: 'history', href: 'history.html', icon: 'clock-3', label: '기록' },
-    { nav: 'settings', href: 'settings.html', icon: 'settings', label: '설정' },
+    { nav: 'home', href: '/index.html', icon: 'house', label: '홈' },
+    { nav: 'history', href: '/history.html', icon: 'clock-3', label: '기록' },
+    { nav: 'settings', href: '/settings.html', icon: 'settings', label: '설정' },
   ];
 
   const nav = document.createElement('nav');

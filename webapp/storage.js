@@ -1,6 +1,7 @@
 const CONVERSATIONS_STORAGE_KEY = 'bilingual-conversations-v1';
 const LEGACY_HISTORY_KEY = 'bilingual-chat-history';
 const DEFAULT_CONVERSATION_TITLE = '새 대화';
+const WORDBOOK_STORAGE_KEY = 'bilingual-wordbook-v1';
 
 const DEMO_USER_SEGMENTS = [
   { type: 'text', value: '안녕하세요, ' },
@@ -227,4 +228,42 @@ function formatConversationDate(isoString) {
     month: 'long',
     day: 'numeric',
   }).format(date);
+}
+
+function loadWordbook() {
+  try {
+    const raw = localStorage.getItem(WORDBOOK_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveWordbook(words) {
+  localStorage.setItem(WORDBOOK_STORAGE_KEY, JSON.stringify(words));
+}
+
+function addWordToWordbook(word, meaning = '') {
+  const normalized = String(word || '').trim();
+  if (!normalized) return;
+
+  const words = loadWordbook();
+  const exists = words.some((item) => item.word === normalized);
+
+  if (exists) return;
+
+  words.push({
+    id: createId('word'),
+    word: normalized,
+    meaning,
+    createdAt: new Date().toISOString(),
+  });
+
+  saveWordbook(words);
+}
+
+function deleteWordFromWordbook(wordId) {
+  const words = loadWordbook().filter((item) => item.id !== wordId);
+  saveWordbook(words);
 }

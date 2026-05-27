@@ -10,7 +10,7 @@ const bottombar = document.querySelector('.bottombar');
 const recordPopup = document.querySelector('#recordPopup');
 const recordTime = document.querySelector('#recordTime');
 const audioBars = document.querySelector('#audioBars');
-const API_BASE_URL = 'http://127.0.0.1:8000';
+const API_BASE_URL = '';
 
 let mediaRecorder = null;
 let recordedChunks = [];
@@ -56,7 +56,7 @@ const conversationId = new URLSearchParams(window.location.search).get('id');
 const chatTitleEl = document.querySelector('#chatTitle');
 
 if (!conversationId) {
-  window.location.replace('index.html');
+  window.location.replace('/');
 }
 
 /** @type {Array<{id:string, role:'assistant'|'user', text?:string, segments?:MessageSegment[]}>} */
@@ -383,10 +383,18 @@ function createUserMessageElement(segments) {
 
 /** @param {MessageSegment[]} segments */
 function addUserMessage(segments) {
+  const normalized = normalizeUserSegments(segments);
+
+  normalized.forEach((seg) => {
+    if (seg.type === 'chip') {
+      addWordToWordbook(seg.word, seg.hint || '');
+    }
+  });
+
   appendChatMessage({
     id: createMessageId(),
     role: 'user',
-    segments: normalizeUserSegments(segments),
+    segments: normalized,
   });
 }
 

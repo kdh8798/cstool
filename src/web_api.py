@@ -63,6 +63,31 @@ async def serve_index():
     return FileResponse(index_path)
 
 
+@app.get("/index.html")
+async def serve_index_html():
+    return FileResponse(UI_DIR / "index.html")
+
+
+@app.get("/chat.html")
+async def serve_chat():
+    return FileResponse(UI_DIR / "chat.html")
+
+
+@app.get("/history.html")
+async def serve_history():
+    return FileResponse(UI_DIR / "history.html")
+
+
+@app.get("/settings.html")
+async def serve_settings():
+    return FileResponse(UI_DIR / "settings.html")
+
+
+@app.get("/wordbook.html")
+async def serve_wordbook():
+    return FileResponse(UI_DIR / "wordbook.html")
+
+
 @app.get("/health")
 async def health_check():
     """
