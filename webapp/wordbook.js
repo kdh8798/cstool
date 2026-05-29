@@ -7,6 +7,17 @@ function speakRussian(word) {
   speechSynthesis.speak(utter);
 }
 
+function formatConfidence(confidence) {
+  if (confidence === null || confidence === undefined || confidence === '') {
+    return '';
+  }
+
+  const percent = Math.round(Number(confidence) * 100);
+  if (Number.isNaN(percent)) return '';
+
+  return ` · 신뢰도 ${percent}%`;
+}
+
 function renderWordbook() {
   const words = loadWordbook();
 
@@ -20,7 +31,7 @@ function renderWordbook() {
     wordbookList.innerHTML = `
       <article class="word-item">
         <h3>저장된 단어가 없어요</h3>
-        <small>대화에서 러시아어 단어가 나오면 자동으로 저장됩니다.</small>
+        <small>대화에서 러시아어 표현이 감지되면 자동으로 저장됩니다.</small>
       </article>
     `;
     return;
@@ -33,7 +44,7 @@ function renderWordbook() {
         <button type="button" class="word-delete" aria-label="단어 삭제">×</button>
         <h3>${item.meaning || '뜻 미등록'}</h3>
         <p class="ru">${item.word}</p>
-        <small>${new Date(item.createdAt).toLocaleDateString('ko-KR')}</small>
+        <small>${new Date(item.createdAt).toLocaleDateString('ko-KR')}${formatConfidence(item.confidence)}</small>
       </article>
     `)
     .join('');

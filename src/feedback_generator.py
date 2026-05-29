@@ -2,7 +2,6 @@ import json
 import re
 from pathlib import Path
 
-
 CYRILLIC_PATTERN = re.compile(r"[\u0400-\u04FF]")
 KEYWORD_FILE = Path(__file__).with_name("math_keywords.json")
 
@@ -15,7 +14,10 @@ DEFAULT_KEYWORD_EXPLANATIONS = {
     "분모": "분수에서 아래에 있는 수",
 }
 
-DEFAULT_FEEDBACK = "학습 피드백: 코드스위칭이나 주요 학습 키워드가 감지되지 않았습니다."
+DEFAULT_FEEDBACK = (
+    "학습 피드백: 등록된 러시아어 학습 키워드가 뚜렷하게 감지되지 않았습니다. "
+    "인식된 문장을 확인하고, 필요한 단어나 표현을 다시 말해 보세요."
+)
 
 RUSSIAN_TERM_EXPLANATIONS = {
     "дробь": "러시아어로 '분수'",
@@ -51,6 +53,21 @@ RUSSIAN_TERM_EXPLANATIONS = {
     "меньше": "러시아어로 '더 작다'",
     "умножить": "러시아어로 '곱하기'",
     "разделить": "러시아어로 '나누기'",
+    "я": "러시아어로 '나는'",
+    "ты": "러시아어로 '너는'",
+    "он": "러시아어로 '그는'",
+    "она": "러시아어로 '그녀는'",
+    "это": "러시아어로 '이것'",
+    "что": "러시아어로 '무엇'",
+    "как": "러시아어로 '어떻게'",
+    "где": "러시아어로 '어디'",
+    "почему": "러시아어로 '왜'",
+    "сколько": "러시아어로 '얼마나 또는 몇 개'",
+    "хочу": "러시아어로 '원하다'",
+    "знаю": "러시아어로 '알다'",
+    "не знаю": "러시아어로 '모르다'",
+    "правильно": "러시아어로 '맞다 또는 올바르다'",
+    "ошибка": "러시아어로 '오류 또는 실수'",
 }
 
 RUSSIAN_TERM_ALIASES = {
@@ -87,6 +104,19 @@ RUSSIAN_TERM_ALIASES = {
     "меньше": ["меньше", "몐셰", "멘셰"],
     "умножить": ["умножить", "움노지트"],
     "разделить": ["разделить", "라즈젤리트", "라즈델리트"],
+    "я": ["я", "야"],
+    "ты": ["ты", "띄", "티"],
+    "это": ["это", "에따", "에타"],
+    "что": ["что", "쉬또", "슈토"],
+    "как": ["как", "까끄", "카크"],
+    "где": ["где", "그제", "그데"],
+    "почему": ["почему", "빠치무", "파치무"],
+    "сколько": ["сколько", "스콜카"],
+    "хочу": ["хочу", "하추", "하츄", "호추"],
+    "знаю": ["знаю", "즈나유"],
+    "не знаю": ["не знаю", "네즈나유"],
+    "правильно": ["правильно", "프라빌나"],
+    "ошибка": ["ошибка", "아쉽카", "오쉽카"],
 }
 
 INTENT_RULES = [
@@ -162,6 +192,59 @@ def generate_feedback(text: str) -> str:
 
     if not feedback:
         return DEFAULT_FEEDBACK
+
+    return "\n".join(feedback)
+
+
+# analysis 기반 피드백 생성 구조
+def generate_feedback_from_analysis(analysis: dict) -> str:
+    tokens = analysis.get("tokens", [])
+    corrected_text = analysis.get("corrected_text", "")
+    summary = analysis.get("summary", "")
+
+    ru_tokens = [
+        token for token in tokens
+        if token.get("language") == "ru"
+    ]
+
+    uncertain_tokens = [
+        token for token in tokens
+        if token.get("language") == "uncertain"
+    ]
+
+    feedback = []
+
+    if ru_tokens:
+        feedback.append("코드스위칭 감지: 러시아어 표현이 포함되어 있습니다.")
+
+        for token in ru_tokens:
+            text = token.get("text", "")
+            meaning = token.get("meaning", "")
+            confidence = token.get("confidence", "")
+
+            if meaning:
+                feedback.append(f"{text}: {meaning}")
+            else:
+                feedback.append(f"{text}: 러시아어 표현으로 감지되었습니다.")
+
+    elif uncertain_tokens:
+        feedback.append("코드스위칭 후보 감지: 러시아어처럼 들리는 표현이 있습니다.")
+
+        for token in uncertain_tokens:
+            text = token.get("text", "")
+            feedback.append(f"{text}: 러시아어 표현일 가능성이 있어 문맥 확인이 필요합니다.")
+
+    else:
+        feedback.append(
+            "등록된 러시아어 표현이 뚜렷하게 감지되지 않았습니다. "
+            "인식된 문장을 확인하고 필요한 표현을 다시 말해 보세요."
+        )
+
+    if summary:
+        feedback.append(f"분석 요약: {summary}")
+
+    if corrected_text:
+        feedback.append(f"복원 문장: {corrected_text}")
 
     return "\n".join(feedback)
 

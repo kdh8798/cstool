@@ -10,7 +10,7 @@ const bottombar = document.querySelector('.bottombar');
 const recordPopup = document.querySelector('#recordPopup');
 const recordTime = document.querySelector('#recordTime');
 const audioBars = document.querySelector('#audioBars');
-const API_BASE_URL = '';
+const API_BASE_URL = 'http://127.0.0.1:8000';
 
 let mediaRecorder = null;
 let recordedChunks = [];
@@ -609,6 +609,22 @@ async function sendAudioToAsrApi(audioBlob) {
   return response.json();
 }
 
+function saveRussianTokensFromAnalysis(analysis) {
+  const tokens = analysis?.tokens;
+
+  if (!Array.isArray(tokens)) return;
+
+  tokens.forEach((token) => {
+    if (token.language !== 'ru') return;
+
+    addWordToWordbook(
+      token.text,
+      token.meaning || '',
+      token.confidence ?? null
+    );
+  });
+}
+
 async function startRecording() {
   isRecording = true;
   document.body.classList.add('recording');
@@ -646,6 +662,14 @@ async function startRecording() {
 
       try {
         const result = await sendAudioToAsrApi(audioBlob);
+        saveRussianTokensFromAnalysis(result.analysis);
+
+        console.log('[ASR RESULT]', result);
+        console.log('[RAW]', result.raw_transcription);
+        console.log('[CANDIDATES]', result.asr_candidates);
+        console.log('[CORRECTED]', result.transcription);
+        console.log('[RULE FEEDBACK]', result.rule_feedback);
+        console.log('[ANALYSIS]', result.analysis);
 
         addUserMessage(segmentsFromModelResult(result.transcription));
 

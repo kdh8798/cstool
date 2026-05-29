@@ -120,7 +120,12 @@ async def transcribe(file: UploadFile = File(...)):
 
     return {
         "transcription": result.get("transcription", ""),
+        "raw_transcription": result.get("raw_transcription", ""),
+        "asr_candidates": result.get("asr_candidates", {}),
+        "rule_feedback": result.get("rule_feedback", ""),
         "feedback": result.get("feedback", ""),
         "audio_path": str(save_path),
         "lora_path": result.get("lora_path", ""),
+        "analysis": result.get("analysis", {}),
+        "scored_candidates": result.get("scored_candidates", []),
     }

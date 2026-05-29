@@ -244,19 +244,22 @@ function saveWordbook(words) {
   localStorage.setItem(WORDBOOK_STORAGE_KEY, JSON.stringify(words));
 }
 
-function addWordToWordbook(word, meaning = '') {
+function addWordToWordbook(word, meaning = '', confidence = null) {
   const normalized = String(word || '').trim();
   if (!normalized) return;
 
   const words = loadWordbook();
-  const exists = words.some((item) => item.word === normalized);
+  const exists = words.some(
+    (item) => item.word.toLowerCase() === normalized.toLowerCase()
+  );
 
   if (exists) return;
 
   words.push({
     id: createId('word'),
     word: normalized,
-    meaning,
+    meaning: meaning || '',
+    confidence,
     createdAt: new Date().toISOString(),
   });
 
