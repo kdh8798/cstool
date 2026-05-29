@@ -249,11 +249,27 @@ function addWordToWordbook(word, meaning = '', confidence = null) {
   if (!normalized) return;
 
   const words = loadWordbook();
-  const exists = words.some(
+  const existing = words.find(
     (item) => item.word.toLowerCase() === normalized.toLowerCase()
   );
 
-  if (exists) return;
+  if (existing) {
+    if (!existing.meaning && meaning) {
+      existing.meaning = meaning;
+    }
+
+    if (
+      (existing.confidence === null || existing.confidence === undefined) &&
+      confidence !== null &&
+      confidence !== undefined
+    ) {
+      existing.confidence = confidence;
+    }
+
+    existing.updatedAt = new Date().toISOString();
+    saveWordbook(words);
+    return;
+  }
 
   words.push({
     id: createId('word'),

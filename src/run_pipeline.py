@@ -35,7 +35,12 @@ from transformers.utils import logging as hf_logging
 from peft import PeftModel
 
 from src.feedback_generator import generate_feedback, generate_feedback_from_analysis
-from src.llm_postprocessor import correct_stt_text, postprocess_feedback, analyze_codeswitch_text
+from src.llm_postprocessor import (
+    correct_stt_text,
+    postprocess_feedback,
+    analyze_codeswitch_text,
+    generate_llm_feedback,
+)
 
 warnings.filterwarnings("ignore")
 hf_logging.set_verbosity_error()
@@ -298,9 +303,16 @@ def run_pipeline(audio_path: Path, language=None):
     )
 
     final_transcription = analysis.get("corrected_text", corrected_transcription)
-
+    
+    # 규칙 기반 피드백 생성
+    """
     rule_feedback = generate_feedback_from_analysis(analysis)
     feedback = postprocess_feedback(final_transcription, rule_feedback)
+    """
+
+    # LLM 기반 피드백 생성
+    rule_feedback = generate_feedback(final_transcription)
+    feedback = generate_llm_feedback(analysis)
 
     print("\n========== PIPELINE RESULT ==========")
     print(f"[AUDIO]")

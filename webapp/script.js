@@ -188,6 +188,65 @@ function segmentsFromModelResult(modelResult) {
   return [{ type: 'text', value: '' }];
 }
 
+function segmentsFromAnalysisResult(result) {
+  const analysis = result?.analysis;
+  const correctedText = analysis?.corrected_text || result?.transcription || '';
+  const tokens = analysis?.tokens;
+
+  if (!correctedText) {
+    return [{ type: 'text', value: '' }];
+  }
+
+  if (!Array.isArray(tokens) || !tokens.length) {
+    return segmentsFromMixedUtterance(correctedText);
+  }
+
+  const ruTokens = tokens
+    .filter((token) => token.language === 'ru' && token.text)
+    .map((token) => ({
+      word: String(token.text).trim(),
+      hint: token.meaning || '',
+    }))
+    .filter((token) => token.word.length > 0);
+
+  if (!ruTokens.length) {
+    return segmentsFromMixedUtterance(correctedText);
+  }
+
+  const segments = [];
+  let cursor = 0;
+
+  ruTokens.forEach((token) => {
+    const index = correctedText.indexOf(token.word, cursor);
+
+    if (index === -1) return;
+
+    if (index > cursor) {
+      segments.push({
+        type: 'text',
+        value: correctedText.slice(cursor, index),
+      });
+    }
+
+    segments.push({
+      type: 'chip',
+      word: token.word,
+      hint: token.hint,
+    });
+
+    cursor = index + token.word.length;
+  });
+
+  if (cursor < correctedText.length) {
+    segments.push({
+      type: 'text',
+      value: correctedText.slice(cursor),
+    });
+  }
+
+  return segments.length ? segments : segmentsFromMixedUtterance(correctedText);
+}
+
 function createAssistantMessageElement(text) {
   const message = document.createElement('section');
   message.className = 'message assistant';
@@ -382,14 +441,16 @@ function createUserMessageElement(segments) {
 }
 
 /** @param {MessageSegment[]} segments */
-function addUserMessage(segments) {
+function addUserMessage(segments, options = {}) {
   const normalized = normalizeUserSegments(segments);
 
-  normalized.forEach((seg) => {
-    if (seg.type === 'chip') {
-      addWordToWordbook(seg.word, seg.hint || '');
-    }
-  });
+  if (options.saveWords !== false) {
+    normalized.forEach((seg) => {
+      if (seg.type === 'chip') {
+        addWordToWordbook(seg.word, seg.hint || '');
+      }
+    });
+  }
 
   appendChatMessage({
     id: createMessageId(),
@@ -671,7 +732,7 @@ async function startRecording() {
         console.log('[RULE FEEDBACK]', result.rule_feedback);
         console.log('[ANALYSIS]', result.analysis);
 
-        addUserMessage(segmentsFromModelResult(result.transcription));
+        addUserMessage(segmentsFromAnalysisResult(result), { saveWords: false });
 
         if (result.feedback) {
           addAssistantMessage(result.feedback);
