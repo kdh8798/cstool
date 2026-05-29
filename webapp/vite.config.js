@@ -1,12 +1,16 @@
 import { defineConfig } from 'vite';
-import mkcert from 'vite-plugin-mkcert';
+import fs from 'fs';
 
 export default defineConfig({
-  plugins: [mkcert()],
   server: {
     host: '0.0.0.0',
-    port: 5173,
+    port: 443,
     strictPort: true,
+
+    https: {
+      key: fs.readFileSync('./ssl/private.key'),
+      cert: fs.readFileSync('./ssl/certificate.crt'),
+    },
 
     proxy: {
       '/api': {

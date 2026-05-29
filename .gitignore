@@ -7,3 +7,5 @@ venv/
 \uploads
 *.bat
 .env
+\webapp\ssl
+\webapp\.well-known

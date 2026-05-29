@@ -10,7 +10,7 @@ const bottombar = document.querySelector('.bottombar');
 const recordPopup = document.querySelector('#recordPopup');
 const recordTime = document.querySelector('#recordTime');
 const audioBars = document.querySelector('#audioBars');
-const API_BASE_URL = 'http://127.0.0.1:8000';
+const API_BASE_URL = '';
 
 let mediaRecorder = null;
 let recordedChunks = [];
