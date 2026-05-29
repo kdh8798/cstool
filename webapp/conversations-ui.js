@@ -1,5 +1,5 @@
 function openChat(conversationId) {
-  window.location.href = `chat.html?id=${encodeURIComponent(conversationId)}`;
+  window.location.href = `/chat.html?id=${encodeURIComponent(conversationId)}`;
 }
 
 function handleDeleteConversation(conversationId, event, onDeleted) {

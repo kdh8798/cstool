@@ -10,7 +10,10 @@ const bottombar = document.querySelector('.bottombar');
 const recordPopup = document.querySelector('#recordPopup');
 const recordTime = document.querySelector('#recordTime');
 const audioBars = document.querySelector('#audioBars');
+const API_BASE_URL = 'http://127.0.0.1:8000';
 
+let mediaRecorder = null;
+let recordedChunks = [];
 let isRecording = false;
 let recognition;
 let recordStartTime = null;
@@ -22,7 +25,7 @@ let animationFrameId = null;
 let mockScenarioTimer = null;
 
 /** Mock: 버튼 → 음성 인식 중 → 3초 후 고정 사용자 발화 */
-const USE_MOCK_VOICE_SCENARIO = true;
+const USE_MOCK_VOICE_SCENARIO = false;
 const MOCK_USER_UTTERANCE = '목이 아프고 кашель 있어요';
 /** 러시아어 칩 옆 한국어 뜻 (없으면 칩만 표시) */
 const RU_WORD_HINTS = {
@@ -53,7 +56,7 @@ const conversationId = new URLSearchParams(window.location.search).get('id');
 const chatTitleEl = document.querySelector('#chatTitle');
 
 if (!conversationId) {
-  window.location.replace('index.html');
+  window.location.replace('/');
 }
 
 /** @type {Array<{id:string, role:'assistant'|'user', text?:string, segments?:MessageSegment[]}>} */
@@ -183,6 +186,65 @@ function segmentsFromModelResult(modelResult) {
   }
 
   return [{ type: 'text', value: '' }];
+}
+
+function segmentsFromAnalysisResult(result) {
+  const analysis = result?.analysis;
+  const correctedText = analysis?.corrected_text || result?.transcription || '';
+  const tokens = analysis?.tokens;
+
+  if (!correctedText) {
+    return [{ type: 'text', value: '' }];
+  }
+
+  if (!Array.isArray(tokens) || !tokens.length) {
+    return segmentsFromMixedUtterance(correctedText);
+  }
+
+  const ruTokens = tokens
+    .filter((token) => token.language === 'ru' && token.text)
+    .map((token) => ({
+      word: String(token.text).trim(),
+      hint: token.meaning || '',
+    }))
+    .filter((token) => token.word.length > 0);
+
+  if (!ruTokens.length) {
+    return segmentsFromMixedUtterance(correctedText);
+  }
+
+  const segments = [];
+  let cursor = 0;
+
+  ruTokens.forEach((token) => {
+    const index = correctedText.indexOf(token.word, cursor);
+
+    if (index === -1) return;
+
+    if (index > cursor) {
+      segments.push({
+        type: 'text',
+        value: correctedText.slice(cursor, index),
+      });
+    }
+
+    segments.push({
+      type: 'chip',
+      word: token.word,
+      hint: token.hint,
+    });
+
+    cursor = index + token.word.length;
+  });
+
+  if (cursor < correctedText.length) {
+    segments.push({
+      type: 'text',
+      value: correctedText.slice(cursor),
+    });
+  }
+
+  return segments.length ? segments : segmentsFromMixedUtterance(correctedText);
 }
 
 function createAssistantMessageElement(text) {
@@ -379,11 +441,21 @@ function createUserMessageElement(segments) {
 }
 
 /** @param {MessageSegment[]} segments */
-function addUserMessage(segments) {
+function addUserMessage(segments, options = {}) {
+  const normalized = normalizeUserSegments(segments);
+
+  if (options.saveWords !== false) {
+    normalized.forEach((seg) => {
+      if (seg.type === 'chip') {
+        addWordToWordbook(seg.word, seg.hint || '');
+      }
+    });
+  }
+
   appendChatMessage({
     id: createMessageId(),
     role: 'user',
-    segments: normalizeUserSegments(segments),
+    segments: normalized,
   });
 }
 
@@ -581,6 +653,39 @@ async function startAudioVisualizer() {
   }
 }
 
+// 녹음 파일을 API로 보내기
+async function sendAudioToAsrApi(audioBlob) {
+  const formData = new FormData();
+  formData.append('file', audioBlob, `recording_${Date.now()}.webm`);
+
+  const response = await fetch(`${API_BASE_URL}/api/transcribe`, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error(`ASR API error: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+function saveRussianTokensFromAnalysis(analysis) {
+  const tokens = analysis?.tokens;
+
+  if (!Array.isArray(tokens)) return;
+
+  tokens.forEach((token) => {
+    if (token.language !== 'ru') return;
+
+    addWordToWordbook(
+      token.text,
+      token.meaning || '',
+      token.confidence ?? null
+    );
+  });
+}
+
 async function startRecording() {
   isRecording = true;
   document.body.classList.add('recording');
@@ -588,7 +693,7 @@ async function startRecording() {
   micBtn.setAttribute('aria-label', '녹음 중');
   setMicIcon('audio-lines');
   micText.textContent = '녹음 중...';
-  statusText.textContent = '음성 인식 중';
+  statusText.textContent = '음성 녹음 중';
   showRecordPopup();
   startRecordTimer();
 
@@ -598,8 +703,58 @@ async function startRecording() {
     return;
   }
 
-  await startAudioVisualizer();
-  if (recognition) recognition.start();
+  try {
+    recordedChunks = [];
+
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+    mediaRecorder = new MediaRecorder(stream);
+
+    mediaRecorder.ondataavailable = (event) => {
+      if (event.data && event.data.size > 0) {
+        recordedChunks.push(event.data);
+      }
+    };
+
+    mediaRecorder.onstop = async () => {
+      const audioBlob = new Blob(recordedChunks, { type: 'audio/webm' });
+
+      statusText.textContent = '모델 추론 중...';
+
+      try {
+        const result = await sendAudioToAsrApi(audioBlob);
+        saveRussianTokensFromAnalysis(result.analysis);
+
+        console.log('[ASR RESULT]', result);
+        console.log('[RAW]', result.raw_transcription);
+        console.log('[CANDIDATES]', result.asr_candidates);
+        console.log('[CORRECTED]', result.transcription);
+        console.log('[RULE FEEDBACK]', result.rule_feedback);
+        console.log('[ANALYSIS]', result.analysis);
+
+        addUserMessage(segmentsFromAnalysisResult(result), { saveWords: false });
+
+        if (result.feedback) {
+          addAssistantMessage(result.feedback);
+        }
+
+        statusText.textContent = '음성 인식 대기 중';
+      } catch (error) {
+        console.error(error);
+        statusText.textContent = '음성 인식 실패';
+        addAssistantMessage('음성 인식 처리 중 오류가 발생했습니다.');
+      } finally {
+        stream.getTracks().forEach((track) => track.stop());
+      }
+    };
+
+    await startAudioVisualizer();
+    mediaRecorder.start();
+  } catch (error) {
+    console.error(error);
+    statusText.textContent = '마이크 접근 실패';
+    stopRecording();
+  }
 }
 
 function stopRecording() {
@@ -614,7 +769,16 @@ function stopRecording() {
   stopRecordTimer();
   stopAudioVisualizer();
 
-  if (statusText.textContent === '음성 인식 중') {
+  if (!USE_MOCK_VOICE_SCENARIO && mediaRecorder && mediaRecorder.state !== 'inactive') {
+    mediaRecorder.stop();
+    return;
+  }
+
+  if (recognition && recognition.stop) {
+    recognition.stop();
+  }
+
+  if (statusText.textContent === '음성 녹음 중' || statusText.textContent === '음성 인식 중') {
     statusText.textContent = '음성 인식 대기 중';
   }
 }
